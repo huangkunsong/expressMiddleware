@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script type="application/javascript">
+		function uploadFile(){
+			var formData = new FormData();
+			//不可以同时公用
+
+			//上传单文件
+			var file1 = document.querySelectorAll("#file1")[0];
+			formData.append("file",file1.files[0]);
+
+			//上传多文件
+			/*var file2 = document.querySelectorAll("#file2")[0];
+			Array.prototype.slice.call(file2.files).forEach(function(item){
+				formData.append("files",item);
+			})*/
+			formData.append("aaa","asdasdasd");
+
+			var xhr = new XMLHttpRequest();
+			xhr.open("POST", '/uploads', true);
+			xhr.onload = function (e) {
+				if (this.status === 200) {
+					document.getElementById("result").innerHTML = this.response;
+				}
+			};
+			xhr.send(formData);
+		}
+	</script>
+</head>
+<body>
+<form enctype="multipart/form-data">
+	Upload File :
+	<input type="file" name="file" id="file1" />
+	<input type="file" name="file" id="file2" multiple=true />
+	<input type="button" value="Upload" onclick="uploadFile()" />
+</form>
+<form enctype="application/x-www-form-urlencoded" method="post" action="/post">
+	<input type="text" name="username"/>
+	<input type="password" name="password"/>
+	<input type="submit" value="Submit"/>
+</form>
+<form enctype="application/x-www-form-urlencoded" method="get" action="/get">
+	<input type="text" name="username"/>
+	<input type="password" name="password"/>
+	<input type="submit" value="Submit"/>
+</form>
+<output id="result"/>
+</body>
+</html>

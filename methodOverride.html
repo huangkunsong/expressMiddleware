@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script type="application/javascript">
+		function sendPost(){
+			const xhr = new XMLHttpRequest();
+			xhr.open("post","/resource",true);
+			xhr.setRequestHeader("X-HTTP-Method-Override","put");
+			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			xhr.send("a=123&b=321");
+		}
+		window.onload = sendPost;
+	</script>
+</head>
+<body>
+<form method="POST" action="/resource?_method=PUT">
+	<input type="text" name="username"/>
+	<input type="password" name="password"/>
+	<input type="submit" value="Submit"/>
+</form>
+</body>
+</html>
