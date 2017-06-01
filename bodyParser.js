@@ -1,3 +1,4 @@
+/* eslint-disable no-irregular-whitespace */
 /**
  * Created by Huangkunsong on 2017/5/22.
  */

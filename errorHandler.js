@@ -6,7 +6,7 @@ const errorHandler = require("errorhandler");
 const notifier = require("node-notifier");
 const app = express();
 
-app.get("/index", function (req, res) {
+app.get("/index", function(req, res) {
     //s未定义会触发异常
     s;
     res.end("asdasd");

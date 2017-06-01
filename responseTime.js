@@ -1,7 +1,7 @@
 /**
  * Created by Huangkunsong on 2017/5/29.
  */
-const express = require("express")
+const express = require("express");
 const responseTime = require("response-time");
 
 const app = express();
